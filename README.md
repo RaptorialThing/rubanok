@@ -1,6 +1,6 @@
 # README
 
-You installed **ruby**[1], **postgresql**[2], **git**[3] on your computer
+You installed **ruby** [#1], **postgresql** [#2], **git** [#3] on your computer
 
 git clone git@github.com:RaptorialThing/rubanok.git
 or
