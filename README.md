@@ -4,7 +4,7 @@ You installed **ruby** #[1], **postgresql** #[2], **git** #[3] on your computer
 
 git clone git@github.com:RaptorialThing/rubanok.git
 or
-git clone https://github.com/RaptorialThing/rubanok
+git clone https://github.com/RaptorialThing/rubanok.git
 
 
 bin/setup
