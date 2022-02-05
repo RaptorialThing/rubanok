@@ -13,7 +13,7 @@ bin/setup
 
 bin/dev
 
-**Open http://127.0.0.1:3000/
+**Open http://127.0.0.1:3000/**
 or
 rails s -p 3000
 **open http://127.0.0.1:3000/**
