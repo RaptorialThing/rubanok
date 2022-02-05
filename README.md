@@ -2,6 +2,8 @@
 
 You installed **ruby** #[1], **postgresql** #[2], **git** #[3] on your computer
 
+Type to command line
+
 git clone git@github.com:RaptorialThing/rubanok.git
 or
 git clone https://github.com/RaptorialThing/rubanok.git
@@ -11,7 +13,7 @@ bin/setup
 
 bin/dev
 
-Open http://127.0.0.1:3000/
+**Open http://127.0.0.1:3000/
 or
 rails s -p 3000
 **open http://127.0.0.1:3000/**
