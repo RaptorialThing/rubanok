@@ -56,9 +56,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-production:
-  <<: *default
-  database: db/production.sqlite3
   database: rubanok_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -84,5 +81,4 @@ production:
 production:
   <<: *default
   database: rubanok_production
-  username: rubanok
   password: <%= ENV["RUBANOK_DATABASE_PASSWORD"] %>
