@@ -1,0 +1,15 @@
+<div>
+    <%= render "layouts/mini_header_menu" %>
+	
+	<div class="grid grid-cols-3">	
+	<div class="col-start-2  col-end-2" style="text-align:center">	
+    <%= link_to "Printers", printers_path, class: " bg-blue-200 px-4 py-1 text-sm font-medium text-center transition-colors duration-300 transform border rounded hover:bg-indigo-400" %>
+	</a>
+	</div>
+	</div>
+
+	<%= render partial: "form", locals: {printer: @printer} %>	
+
+    <%= render "layouts/footer" %>
+
+</div>

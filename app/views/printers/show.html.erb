@@ -1,0 +1,38 @@
+<div>
+    <%= render "layouts/mini_header_menu" %>
+	
+	<div class="py-1 grid grid-cols-3">	
+	<div class="col-start-2  col-end-2" style="text-align:center">	 
+    <%= link_to "Добавить", new_printer_path, class: " bg-blue-200 px-4 py-1 text-sm font-medium text-center transition-colors duration-300 transform border rounded hover:bg-indigo-400" %>
+	</div>
+	</div>
+
+<!-- 	<div data-controller="printer"> <button data-action="click->printer#sendDelete"> Go </button> 
+  <span id="printer-output" data-printer-target="output">
+  </span>
+	</div> -->
+
+	<div class="grid py-1 grid-cols-3">	
+	<div class="col-start-2  col-end-2" style="text-align:center">	
+	<%= button_to 'Удалить', @printer, method: :delete, form: { data: { turbo_confirm: 'Удалить? Уверены?' } }, class: "bg-red-200 px-4 py-1 text-sm font-medium text-center transition-colors duration-300 transform border rounded hover:bg-red-400" %>
+	</div>
+	</div>
+
+	<div class="grid py-1 grid-cols-3">	
+	<div class="col-start-2  col-end-2" style="text-align:center">	
+	<%= link_to 'Изменить', edit_printer_path, class: "bg-green-200 px-4 py-1 text-sm font-medium text-center transition-colors duration-300 transform border rounded hover:bg-green-400" %>
+	</div>
+	</div>
+	
+	<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+	<% if @printer.description.present? %>
+	<div class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900">Description </div>
+	<div class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900">
+	<%= @printer.description %>
+	</div>
+	<% end %>
+	</div>
+
+    <%= render "layouts/footer" %>
+
+</div>
