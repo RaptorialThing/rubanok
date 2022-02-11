@@ -47,7 +47,11 @@
                     adipiscing elit</h2>
     
                 <div class="flex justify-center mt-8">
-                        <%= link_to "Принтеры", printers_path, class: "px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500" %>
+                <% if current_user.presence %>    
+                        <%= link_to "Принтеры", printers_path(id: current_user.id), class: "px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500" %>
+                <% else %>
+                        <%= link_to "Принтеры", printers_path, class: "px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500" %>        
+                <% end %>
                 </div>
             </div>
         </section>

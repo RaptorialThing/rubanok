@@ -1,8 +1,11 @@
 class PrintersController < ApplicationController
+	before_action :authenticate_user!, except: [:index]
+
+
 	def index
 		if params[:id]
 			user = User.find params[:id]
-			@printers = Printer.find(user:user)
+			@printers = user.printers
 		else 
 			@printers = Printer.all	
 		end	
@@ -28,11 +31,17 @@ class PrintersController < ApplicationController
 
 	def edit
 		@printer = Printer.find(params[:id])
+		if @printer.user != current_user
+			redirect_to root_path
+		end	
 	end	
 
 	
 	def update
 		@printer = Printer.find(params[:id])
+		if @printer.user != current_user
+			redirect_to root_path
+		end	
 		if @printer.update(printer_params)
 			redirect_to @printer
 		else 
@@ -43,13 +52,18 @@ class PrintersController < ApplicationController
 
 	def destroy
 		@printer = Printer.find(params[:id])
-		@printer.destroy
+		if @printer.user == current_user
+			@printer.destroy
+		end	
 		redirect_to root_path
 	end	
 
 
 	def show
 		@printer = Printer.find(params[:id])
+		if @printer.user != current_user
+			redirect_to root_path
+		end	
 	end		
 
 
