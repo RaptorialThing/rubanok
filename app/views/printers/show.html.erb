@@ -33,6 +33,35 @@
 	<% end %>
 	</div>
 
+<div class="container mb-2 flex mx-auto w-full items-center justify-center">
+	<ul class="flex flex-col p-4">
+	<% if @printer.orders.presence %>
+	<% @printer.orders.each do |order| %>
+
+									
+<li class="border-gray-400 flex flex-row mb-2">
+										<div
+											class="select-none rounded-md flex flex-1 items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-2 rounded-2xl border-2 p-6 mt-3 border-red-200 hover:shadow-2xl"
+										>
+											<div class="flex-1 pl-1 mr-16">
+												<div class="font-medium">
+											Description: <%= order.description %>												
+											</div>
+											</div>
+											<div
+												class="w-1/4 text-wrap text-center text-black text-bold flex flex-col rounded-md bg-blue-200 justify-center items-center mr-10 p-2"
+											>
+											<%= link_to "Подробнее", order_path(order) %>	
+											</div>
+
+										</div>
+</li>
+
+	<% end %>	
+	<% end %>
+</ul>
+</div>
+
     <%= render "layouts/footer" %>
 
 </div>

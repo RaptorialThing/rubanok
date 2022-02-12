@@ -10,6 +10,7 @@
 
 <div class="container mb-2 flex mx-auto w-full items-center justify-center">
 	<ul class="flex flex-col p-4">
+	<% if @printers.presence %>
 	<% @printers.each do |printer| %>
 
 									
@@ -23,14 +24,22 @@
 											</div>
 											</div>
 											<div
-												class="w-1/4 text-wrap text-center text-black text-bold flex flex-col rounded-md bg-blue-200 justify-center items-center mr-10 p-2"
+												class="w-1/8 text-wrap text-center text-black text-bold flex flex-col rounded-md bg-blue-200 justify-center items-center mr-10 p-2"
 											>
 											<%= link_to "Подробнее", printer_path(printer) %>	
 											</div>
+									
+											<%= form_with url: new_order_path, method: :get   do |form| %>
+											 <%= form.hidden_field :printer, value: printer.id %>
+											 <%= form.hidden_field :user, value: current_user.id%> 
+											 <%= form.button "Распечатать", class: "w-1/8 text-wrap text-center text-black text-bold flex flex-col rounded-md bg-green-200 justify-center items-center mr-10 p-2" %>
+											 <% end %>
+
 										</div>
 </li>
 
 	<% end %>	
+	<% end %>
 </ul>
 </div>
 

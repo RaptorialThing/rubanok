@@ -20,8 +20,13 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div :class="isOpen ? 'flex' : 'hidden'"
                 class="flex-col mt-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
-                <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-                    href="#">Home</a>
+
+                <% if current_user.presence %>
+                        <%= link_to "Заказы", orders_path(id: current_user.id), class: "text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400" %>
+                <% else %>
+                        <%= link_to "Заказы", orders_path, class: "text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400" %>                   
+                <% end %>  
+
                 <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
                     href="#">Templates</a>
 

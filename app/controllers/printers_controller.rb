@@ -60,10 +60,7 @@ class PrintersController < ApplicationController
 
 
 	def show
-		@printer = Printer.find(params[:id])
-		if @printer.user != current_user
-			redirect_to root_path
-		end	
+		@printer = Printer.find(params[:id])	
 	end		
 
 
