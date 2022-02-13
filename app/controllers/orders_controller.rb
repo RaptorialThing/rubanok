@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
 	def edit
 		@order = Order.find(params[:id])
 
-		if @order.user != current_user
+		if @order.user != current_user and @order.printer.user != current_user
 			redirect_to root_path
 		end
 	end
@@ -47,10 +47,10 @@ class OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@order.status = params[:order][:status] ? Order.statuses[params[:order][:status]] : :created
-		if @order.user != current_user
+		if @order.user != current_user and @order.printer.user != current_user
 			redirect_to root_path
-		end
-		if @order.update(order_params)
+			
+		elsif @order.update(order_params)
 			redirect_to @order
 		else
 			render :edit
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		if @order.user != current_user
+		if @order.user != current_user and @order.printer.user != current_user
 			redirect_to root_path
 		end
 	end

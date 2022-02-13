@@ -1,6 +1,7 @@
 
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 <%= form_with model: order do |form| %>
+		<% if order.user.nil? or order.user == current_user %>
 
 			<%= form.label :description, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %> 
 			<%=  form.text_field :description, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
@@ -19,11 +20,22 @@
 			<%=  form.select :printer, printers_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 			
 			<% end %>
 	
-
+			<% if order.printer.user != current_user %>
 			<% status_select = Order.statuses.first(2).collect{|e| e[0] = e[0].to_sym } %>
 			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
-			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 			
-
+			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
+			<% else %>
+			<% status_select = Order.statuses.collect{|e| e[0] = e[0].to_sym } %>
+			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
+			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
+			<% end %>		
+			
+		<% elsif order.printer.user == current_user %>
+			<% status_select = Order.statuses.to_a.last(3).collect{|e| e[0] = e[0].to_sym } %>
+			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
+			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
+		
+		<% end %>
 
 			<% order.errors.full_messages_for(:description).each do |message|%>
 			<div><%= message %></div>
