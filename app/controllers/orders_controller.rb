@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
 		user = User.find params[:order][:user]
 		@order = user.orders.new(order_params)
 		@order.printer = Printer.find(params[:order][:printer])
+		@order.status = params[:order][:status] ? params[:order][:status] : :created
 
 		if @order.save
 			redirect_to @order
@@ -45,6 +46,7 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
+		@order.status = params[:order][:status] ? Order.statuses[params[:order][:status]] : :created
 		if @order.user != current_user
 			redirect_to root_path
 		end

@@ -28,6 +28,15 @@
 	<% end %>
 	</div>
 
+	<div class="min-h-full flex items-center justify-center py-1 px-4 sm:px-6 lg:px-8">
+	<% if @order.status.present? %>
+	<div class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900">Status </div>
+	<div class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900">
+	<%= @order.status %>
+	</div>
+	<% end %>
+	</div>
+
 	<div class="min-h-full flex items-center justify-center  px-4 sm:px-6 lg:px-8">
 	<% if @order.printer.present? %>
 	<div class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900">Printer </div>

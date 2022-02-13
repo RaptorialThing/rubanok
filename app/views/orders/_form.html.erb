@@ -18,6 +18,12 @@
 			<%= form.label :printer, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
 			<%=  form.select :printer, printers_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 			
 			<% end %>
+	
+
+			<% status_select = Order.statuses.first(2).collect{|e| e[0] = e[0].to_sym } %>
+			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
+			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 			
+
 
 			<% order.errors.full_messages_for(:description).each do |message|%>
 			<div><%= message %></div>
