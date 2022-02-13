@@ -20,12 +20,12 @@
 			<%=  form.select :printer, printers_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 			
 			<% end %>
 	
-			<% if order.printer.user != current_user %>
-			<% status_select = Order.statuses.first(2).collect{|e| e[0] = e[0].to_sym } %>
+			<% if order.printer.presence and order.printer.user == current_user %>
+			<% status_select = Order.statuses.collect{|e| e[0] = e[0].to_sym } %>
 			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
 			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
 			<% else %>
-			<% status_select = Order.statuses.collect{|e| e[0] = e[0].to_sym } %>
+			<% status_select = Order.statuses.first(2).collect{|e| e[0] = e[0].to_sym } %>
 			<%= form.label :status, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900" %>
 			<%= form.select :status, status_select, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"%> 
 			<% end %>		
